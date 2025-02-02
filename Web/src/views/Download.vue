@@ -17,7 +17,7 @@
 <style scoped>
 @font-face {
   font-family: 'Montserrat';
-  src: url('../assets/fonts/Montserrat/Montserrat-Italic-VarwiableFont_wght.ttf') format('truetype');
+  src: url('../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -60,7 +60,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 60%;
+  max-width: 55%;
   padding: 2rem;
 }
 

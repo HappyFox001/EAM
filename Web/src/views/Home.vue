@@ -263,7 +263,7 @@
 
 
 .second-section {
-  display: none;
+  display: flex;
   height: 90vh;
   background-color: #0a0a0a;
   color: white;
