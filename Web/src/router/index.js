@@ -4,12 +4,12 @@ import Download from '../views/Download.vue';
 
 const routes = [
     {
-        path: '/',
+        path: '/EAM/',
         name: 'home',
         component: Home,
     },
     {
-        path: '/download',
+        path: '/EAM/download',
         name: 'download',
         component: Download,
     }
