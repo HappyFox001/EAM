@@ -6,17 +6,23 @@ When I was young, I always dreamed to become a super hero that can change the wo
 
 ## Overview
 
-EAM is an innovative AI-powered middleware layer built between Ethereum and users, designed to revolutionize Web3 adoption. By leveraging advanced AI language capabilities, EAM aims to onboard the next 10M users into the Web3 ecosystem by making blockchain interactions intuitive and secure.EAM consists of three main components:
+EAM is an innovative AI-powered middleware layer built between Ethereum and users, designed to revolutionize Web3 adoption. By leveraging advanced AI language capabilities, EAM aims to onboard the next 10M users into the Web3 ecosystem by making Ethereum interactions intuitive and secure.
+
+**EAM consists of three main components:**
 
 - Charlotte: Frontend Application built with Flutter for cross-platform compatibility, intuitive user interface, and natural language interactions.
+
 - AI Backend: Developed with Python language, optimized for performance and security, and integrated with Charlotte.
-- Middleware (Middleware): Designed to simplify on-chain operations and enhance user experience, providing a unified interface between users and Ethereum.
+
+- Security Check Model: Designed to check the security of user transactions and contracts, ensuring that users are protected from common Web3 vulnerabilities.
 
 ## Mission
 
 Our mission is to bridge the gap between traditional users and Web3 technology by providing an intelligent, secure, and user-friendly interface that transforms natural language inputs into Ethereum operations.
 
 ## Architecture
+
+![EAM Architecture](./Web/src/assets/figure2.svg)
 
 EAM consists of three main components:
 
@@ -48,7 +54,7 @@ EAM consists of three main components:
 
 ```mermaid
 graph TD
-    A[User Input] -->|Natural Language| B[Frontend APP]
+    A[User Input] -->|Natural Language| B[Charlotte]
     B -->|Request| C[AI Backend]
     C -->|Command Generation| D[Security Check]
     D -->|Validation| E[Smart Contract Interaction]
@@ -65,41 +71,24 @@ graph TD
 - **User-Friendly**: Simplified transaction flow with clear confirmations
 - **AI-Powered Protection**: Advanced security measures to protect users from scams and errors
 
-## Security
+## Related technologies
 
-Security is at the core of EAM's design:
-
-- AI-powered contract auditing
-- Transaction simulation before execution
-- Risk level assessment
-- Suspicious activity detection
-- Real-time security alerts
-
-## Benefits
-
-- **For Users**: Simplified Web3 interaction without technical knowledge
-- **For Developers**: Easy integration with existing DApps
-- **For the Ecosystem**: Accelerated Web3 adoption and improved security
-
-## Technical Stack
-
-- **Frontend**: Flutter
-- **Backend**: Advanced AI Models
-- **Blockchain**: Ethereum (with multi-chain expansion planned)
-- **Security**: Custom AI security models
-- **Infrastructure**: Distributed and scalable architecture
+- ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white)
+- ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+- ![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=flat&logo=ethereum&logoColor=white)
+- ![AI](https://img.shields.io/badge/AI-FFC57D?style=flat&logo=ai&logoColor=white)
+- ![Web3](https://img.shields.io/badge/Web3-34A85A?style=flat&logo=web3&logoColor=white)
 
 ## Future Development
 
 - Multi-chain support expansion
 - Advanced AI model iterations
 - Enhanced security features
-- Community-driven development
-- Integration with more DeFi protocols
+- Integration with more DeFi protocols(As Demo,we only have time to support Uniswap V3 and Lido)
 
-## Contributing
+## What we want to achieve
 
-We welcome contributions from the community! Please check our contribution guidelines for more information.
+We want to make Ethereum more accessible to Web2 users by solving some of the key challenges in the current ecosystem, such as understanding user needs and ensuring security.We want to make Web3 become the future of the world.
 
 ## License
 
