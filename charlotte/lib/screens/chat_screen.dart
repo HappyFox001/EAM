@@ -302,7 +302,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            Color(0xFF8B7EF8),
+                            Color.fromRGBO(139, 126, 248, 1),
                           ),
                         ),
                       )

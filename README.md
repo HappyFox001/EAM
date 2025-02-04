@@ -1,52 +1,106 @@
-# EAM 产品文档
+# EAM (Ethereum Agent Manager)
 
-## 项目信息
+## Something about us
 
-EAM（Ethereum Agent Manager）是一个构建于以太坊和用户之间的通用 AI Agent 虚拟机层，旨在将用户需求转化为可一键授权的链上操作。该系统结合 AI、虚拟机与智能审计技术，降低 Web3 交互门槛，同时提升安全性。
+When I was young, I always dreamed to become a super hero that can change the world. And now, AI is the biggesr hero in the world.So we build Ethereum Agent Manager named EAM.We want to bring 10M Web2 users to Ethereum by simplifying interactions and enhancing security checks.We think it's not only a dream, it's a reality that can change the world.
 
-### **核心特性**
+## Overview
 
-- **智能指令生成**：结合 RAG（检索增强生成）技术，自动匹配不同 APP 的指令流。
-- **链上智能执行**：解析用户意图并生成 JSON 格式的链上可执行命令。
-- **安全审计 AI**：利用 AI 模型进行操作风险管理，防止恶意合约调用。
-- **一键授权 & 执行**：用户授权后，可自动执行链上操作，减少复杂交互。
+EAM is an innovative AI-powered middleware layer built between Ethereum and users, designed to revolutionize Web3 adoption. By leveraging advanced AI language capabilities, EAM aims to onboard the next 10M users into the Web3 ecosystem by making blockchain interactions intuitive and secure.EAM consists of three main components:
 
----
+- Charlotte: Frontend Application built with Flutter for cross-platform compatibility, intuitive user interface, and natural language interactions.
+- AI Backend: Developed with Python language, optimized for performance and security, and integrated with Charlotte.
+- Middleware (Middleware): Designed to simplify on-chain operations and enhance user experience, providing a unified interface between users and Ethereum.
 
-## 技术架构
+## Mission
 
-EAM 主要由以下几个模块组成：
+Our mission is to bridge the gap between traditional users and Web3 technology by providing an intelligent, secure, and user-friendly interface that transforms natural language inputs into Ethereum operations.
 
-1. **APP 前端（Flutter）**
+## Architecture
 
-   - 负责处理用户输入（语音/文字）
-   - 交互模型并展示指令执行选项
+EAM consists of three main components:
 
-2. **RAG + 命令筛选模型**
+### 1. Charlotte
 
-   - 检索存储的指令信息
-   - 从用户意图中提取可执行的指令目标
+- Built with Flutter for cross-platform compatibility
+- Intuitive user interface for natural language interactions
+- Supports both text and voice inputs
+- Real-time transaction preview and confirmation
+- Wallet integration and management
 
-3. **格式化命令输出模型**
+### 2. AI Backend
 
-   - 解析用户需求并生成标准化 JSON 指令
-   - 适配不同 DApp 的 API 交互格式
+- Advanced Natural Language Processing for understanding user intentions
+- RAG (Retrieval-Augmented Generation) system for accurate command matching
+- Smart command generation and optimization
+- Standardized JSON output format for blockchain operations
+- Multi-chain support and protocol adaptation
 
-4. **执行层**
-   - 获取用户授权
-   - 执行链上操作（如智能合约调用、资产转移等）
+### 3. Security Check Model
 
----
+- AI-powered smart contract risk assessment
+- Real-time transaction analysis and validation
+- Malicious contract detection
+- Gas optimization recommendations
+- User protection against common Web3 vulnerabilities
 
-## EAM 工作流程
+## Workflow
 
 ```mermaid
-graph TD;
-    用户输入 -->|语音/文字| APP;
-    APP -->|请求| RAG+命令筛选模型;
-    RAG+命令筛选模型 -->|生成JSON| 格式化命令输出模型;
-    格式化命令输出模型 -->|执行指令| 执行层;
-    执行层 -->|链上交互| 目标合约;
+graph TD
+    A[User Input] -->|Natural Language| B[Frontend APP]
+    B -->|Request| C[AI Backend]
+    C -->|Command Generation| D[Security Check]
+    D -->|Validation| E[Smart Contract Interaction]
+    E -->|Confirmation| F[Transaction Execution]
+    F -->|Result| B
 ```
 
-> EAM，致力于推动 Web3 交互智能化，降低门槛，提升安全性。
+## Key Features
+
+- **Natural Language Interface**: Interact with Ethereum using everyday language
+- **Intelligent Command Generation**: Automatic conversion of user intentions into Ethereum operations
+- **Security First**: Built-in security checks and risk assessment
+- **Multi-Protocol Support**: Compatible with various DeFi protocols and Web3 applications
+- **User-Friendly**: Simplified transaction flow with clear confirmations
+- **AI-Powered Protection**: Advanced security measures to protect users from scams and errors
+
+## Security
+
+Security is at the core of EAM's design:
+
+- AI-powered contract auditing
+- Transaction simulation before execution
+- Risk level assessment
+- Suspicious activity detection
+- Real-time security alerts
+
+## Benefits
+
+- **For Users**: Simplified Web3 interaction without technical knowledge
+- **For Developers**: Easy integration with existing DApps
+- **For the Ecosystem**: Accelerated Web3 adoption and improved security
+
+## Technical Stack
+
+- **Frontend**: Flutter
+- **Backend**: Advanced AI Models
+- **Blockchain**: Ethereum (with multi-chain expansion planned)
+- **Security**: Custom AI security models
+- **Infrastructure**: Distributed and scalable architecture
+
+## Future Development
+
+- Multi-chain support expansion
+- Advanced AI model iterations
+- Enhanced security features
+- Community-driven development
+- Integration with more DeFi protocols
+
+## Contributing
+
+We welcome contributions from the community! Please check our contribution guidelines for more information.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
