@@ -50,27 +50,20 @@ class WalletService {
   // **从助记词生成以太坊私钥**
   Future<bool> generateFromMnemonic(String mnemonic) async {
     try {
-      // **1. 验证助记词**
       if (!bip39.validateMnemonic(mnemonic)) {
         throw Exception('Invalid mnemonic');
       }
 
-      // **2. 生成种子**
       final seed = bip39.mnemonicToSeed(mnemonic);
 
-      // **3. 通过 BIP32 生成主密钥**
       final root = bip32.BIP32.fromSeed(seed);
 
-      // **4. 遵循 BIP44 派生路径 m/44'/60'/0'/0/0**
       final ethNode = root.derivePath("m/44'/60'/0'/0/0");
 
-      // **5. 获取私钥**
       _privateKey = HEX.encode(ethNode.privateKey!);
 
-      // **6. 生成 Web3Dart 凭证**
       _credentials = EthPrivateKey.fromHex(_privateKey!);
 
-      // **7. 获取以太坊地址**
       _publicKey = _credentials?.address.hex;
 
       return true;

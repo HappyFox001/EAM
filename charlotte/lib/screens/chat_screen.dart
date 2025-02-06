@@ -94,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
           _messages.removeLast();
           _messages.add(
             ChatMessage(
-              text: "这是一个模拟的AI回复消息。后续可以接入实际的AI对话功能。",
+              text: "It's a test message",
               isUser: false,
               timestamp: DateTime.now(),
               isExecutable: true,
