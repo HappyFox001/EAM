@@ -1,0 +1,73 @@
+{
+    "commands": [
+      {
+        "command_id": "uniswap_swap_eth_usdc",
+        "contract_address": "0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD",
+        "function_abi": {
+          "inputs": [
+            {
+              "name": "recipient",
+              "type": "address"
+            },
+            {
+              "name": "amountIn",
+              "type": "uint256"
+            },
+            {
+              "name": "amountOutMinimum",
+              "type": "uint256"
+            },
+            {
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            }
+          ],
+          "name": "exactInputSingle",
+          "outputs": [
+            {
+              "name": "amountOut",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        "parameters": {
+          "recipient": "0xYourAddressHere",
+          "amountIn": "100000000000000000",
+          "amountOutMinimum": "0",
+          "sqrtPriceLimitX96": "0"
+        },
+        "execution_description": "在Sepolia测试网上通过Uniswap V3交换0.1 ETH为USDC",
+        "security_audit": {
+          "risk_level": "low",
+          "audit_notes": "使用官方Uniswap V3 Router合约，交易金额合理"
+        }
+      },
+      {
+        "command_id": "lido_stake",
+        "contract_address": "0x1643E812aE58766192Cf7D2Cf9567dF2C37e9B7F",
+        "function_abi": {
+          "inputs": [],
+          "name": "submit",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        "parameters": {
+          "value": "200000000000000000"
+        },
+        "execution_description": "在Sepolia测试网上质押0.2 ETH到Lido",
+        "security_audit": {
+          "risk_level": "low",
+          "audit_notes": "使用官方Lido质押合约，金额合理且可随时提取"
+        }
+      }
+    ]
+  }
+  

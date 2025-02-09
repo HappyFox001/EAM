@@ -1,5 +1,8 @@
+import 'package:charlotte/models/contract_command.dart';
+import 'package:charlotte/screens/transaction_dialog.dart';
 import 'package:flutter/material.dart';
 import '../services/wallet_service.dart';
+import '../services/contract_command_service.dart';
 import 'mnemonic_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -34,6 +37,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
   double _balance = 0.0;
   late AnimationController _fadeController;
+  final ContractCommandService _commandService = ContractCommandService();
 
   @override
   void initState() {
@@ -88,28 +92,36 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     });
     _scrollToBottom();
 
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () async {
       if (mounted) {
+        final commands = await _commandService.processUserInput(text);
         setState(() {
           _messages.removeLast();
-          _messages.add(
-            ChatMessage(
-              text: "It's a test message",
-              isUser: false,
-              timestamp: DateTime.now(),
-              isExecutable: true,
-              onExecute: () => _showExecutionDialog(
-                  "Executing a smart contract call on Ethereum Sepolia. Please review carefully.",
-                  "Transfer 0.1 ETH to address 0x123..."),
-            ),
-          );
+          for (final command in commands) {
+            _messages.add(
+              ChatMessage(
+                text: command.executionDescription,
+                isUser: false,
+                timestamp: DateTime.now(),
+                isExecutable: true,
+                onExecute: () {
+                  _showExecutionDialog(
+                    command.executionDescription,
+                    command.getFormattedDetails(),
+                    command,
+                  );
+                },
+              ),
+            );
+          }
         });
         _scrollToBottom();
       }
     });
   }
 
-  void _showExecutionDialog(String description, String operation) {
+  void _showExecutionDialog(
+      String description, String operation, ContractCommand command) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -191,63 +203,53 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                           onPressed: () {
                             Navigator.of(context).pop();
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Performing AI safety check...'),
-                                backgroundColor: Color(0xFF8B7EF8),
+                              SnackBar(
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text('AI Safety Check Results:'),
+                                    const SizedBox(height: 4),
+                                    Text(command.getSecurityAuditDetails()),
+                                  ],
+                                ),
+                                backgroundColor: const Color(0xFF8B7EF8),
+                                duration: const Duration(seconds: 5),
                               ),
                             );
                           },
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 8,
+                              horizontal: 24,
+                              vertical: 12,
                             ),
+                            backgroundColor: Colors.grey[100],
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(Icons.security_update_good,
-                                  color: Color(0xFF8B7EF8)),
-                              const SizedBox(width: 8),
-                              Text(
-                                'AI Safe Check',
-                                style: TextStyle(
-                                  color: Colors.grey[800],
-                                ),
-                              ),
-                            ],
-                          ),
+                          child: const Text('AI Safety Check'),
                         ),
-                        ElevatedButton(
+                        TextButton(
                           onPressed: () {
                             Navigator.of(context).pop();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Executing operation...'),
-                                backgroundColor: Color(0xFF2D2B52),
-                              ),
+                            showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return TransactionDialog(
+                                  command: command,
+                                );
+                              },
                             );
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF8B7EF8),
+                          style: TextButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 8,
+                              horizontal: 24,
+                              vertical: 12,
                             ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
+                            backgroundColor: const Color(0xFF8B7EF8),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              Icon(Icons.play_arrow, color: Colors.white),
-                              SizedBox(width: 8),
-                              Text(
-                                'Execute',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
+                          child: const Text(
+                            'Execute',
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
                       ],
@@ -522,7 +524,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                         child: TextField(
                           controller: _textController,
                           decoration: InputDecoration(
-                            hintText: 'request in ethereum ...',
+                            hintText: 'Type your request...',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(25),
                               borderSide: BorderSide.none,

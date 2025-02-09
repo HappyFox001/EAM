@@ -13,7 +13,6 @@ EAM is an innovative AI-powered middleware layer built between Ethereum and user
 ### Build Your Self
 
 ```bash
-# Start Charlotte (Frontend)
 cd charlotte
 flutter pub get
 flutter run
@@ -167,6 +166,18 @@ graph TD
 | ---------- | ---- | ----------------------------------------- |
 | Qian Zhang | CEO  | Blockchain Engineer、Researcher in 6block |
 | Junjie Shi | CTO  | AI engineer and blockchain expert         |
+
+## Related Papers
+
+1. **Realhybrid: A Hybrid Blockchain Consensus with Node-Level Switching**
+   - *Authors*: Hao Yang, Jing Chen*, Chun Kit SZE, Meng Jia, Ruiying Du, Kun He
+   - *Conference*: USENIX ATC
+   - *Status*: Submitted
+
+2. **Catching Large-Scale DeFi Security Threats via Graph-Transformer Language Mode**
+   - *Authors*: Wei Ma, Chun Kit SZE (co-first author), Jiaxi Qiu, Cong Wu*, Jing Chen, Lingxiao Jiang, Shangqing Liu, Yang Liu, Xiang Yang
+   - *Journal*: IEEE TIFS
+   - *Status*: Submitted
 
 ## Related technologies
 
